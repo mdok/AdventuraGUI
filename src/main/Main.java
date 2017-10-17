@@ -12,6 +12,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import logika.Hra; // import balicku logika.Hra vzhledem k tomu ze ho tu pouzivame
+import logika.IHra;
+import logika.*;
+import uiText.TextoveRozhrani;
 
 /**
  *
@@ -22,12 +26,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
-        btn.setText("Say 'Hello World'");
+        btn.setText("Start Adventura");
         btn.setOnAction(new EventHandler<ActionEvent>() { // co ma delat po kliknuti
             
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+                IHra hra= new Hra(); // spusti hru
+                TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
+                textoveRozhrani.hraj();
             }
         });
         
@@ -39,7 +45,7 @@ public class Main extends Application {
         
         Scene scene = new Scene(root, 300, 250); // vztvoreni nove sceny a vloyeni tlacitka (pane) do sceny , sirka vyska
         
-        primaryStage.setTitle("Hello World!"); // title sceny
+        primaryStage.setTitle("Moje adventura"); // title sceny
         primaryStage.setScene(scene); // vlozeni sceny na stage
         primaryStage.show(); // zobrazeni sceny
     }
@@ -48,7 +54,21 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args); //spusti metodu start
+        if(args.length == 0){
+            launch(args);
+        }else{
+            if(args[0].equals("-text")){
+                IHra hra = new Hra();
+                TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
+                textoveRozhrani.hraj();
+
+            }else{
+                System.out.println("Neplatny parametr");
+                System.exit(1);
+            }
+        }
+        
+        //launch(args); //spusti metodu start
     }
     
 }
