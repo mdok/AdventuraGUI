@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -68,20 +70,28 @@ public class Main extends Application {
             }
             
         });
+        
         FlowPane dolniPanel = new FlowPane();
         dolniPanel.setAlignment(Pos.CENTER);
         dolniPanel.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextField);
-                
+        
+        //obrazek s mapou
+        FlowPane obrazekPane=new FlowPane();
+        ImageView obrazek = new ImageView( new Image(Main.class.getResourceAsStream("/zdroje/planek.jpg"),550,310,false,false));
+        
+        //get children proto ze flowpane ma vsechny prvky jako list -> get children ziskame posledni prvek a nakonec listu dame obrazek
+        obrazekPane.getChildren().add(obrazek);
+        obrazekPane.setPrefSize(550,310);
+       
+        borderPane.setLeft(obrazekPane);
         borderPane.setBottom(dolniPanel);
-                
-        //TextoveRozhrani textoveRozhrani = new TextoveRozhrani(hra);
-        //textoveRozhrani.hraj();
-         
-        Scene scene = new Scene(borderPane, 800, 500); // vztvoreni nove sceny a vloyeni tlacitka (pane) do sceny , sirka vyska
+        Scene scene = new Scene(borderPane, 1200, 600); // vztvoreni nove sceny a vloyeni tlacitka (pane) do sceny , sirka vyska
         
         primaryStage.setTitle("Moje adventura"); // title sceny
         primaryStage.setScene(scene); // vlozeni sceny na stage
         primaryStage.show(); // zobrazeni sceny
+        
+        zadejPrikazTextField.requestFocus(); // po spusteni adventury lze rovnou psat do pole pro text
     }
 
     /**
