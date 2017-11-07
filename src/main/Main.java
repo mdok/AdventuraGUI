@@ -5,6 +5,8 @@
  */
 package main;
 
+import UI.Mapa;
+import UI.MenuPole;
 import java.util.HashSet;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -35,10 +37,17 @@ import uiText.TextoveRozhrani;
  */
 public class Main extends Application {
     
+    private Mapa mapa;
+    private MenuPole menu;
+    
     @Override
     public void start(Stage primaryStage) {
         
+      
         IHra hra= new Hra(); // spusti hru
+        mapa = new Mapa(hra);
+        menu = new MenuPole();
+        
         BorderPane borderPane = new BorderPane();
         TextArea centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
@@ -75,15 +84,10 @@ public class Main extends Application {
         dolniPanel.setAlignment(Pos.CENTER);
         dolniPanel.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextField);
         
-        //obrazek s mapou
-        FlowPane obrazekPane=new FlowPane();
-        ImageView obrazek = new ImageView( new Image(Main.class.getResourceAsStream("/zdroje/planek.jpg"),550,310,false,false));
+        borderPane.setLeft(mapa);
         
-        //get children proto ze flowpane ma vsechny prvky jako list -> get children ziskame posledni prvek a nakonec listu dame obrazek
-        obrazekPane.getChildren().add(obrazek);
-        obrazekPane.setPrefSize(550,310);
-       
-        borderPane.setLeft(obrazekPane);
+        //menu Adventury
+        borderPane.setTop(menu);
         borderPane.setBottom(dolniPanel);
         Scene scene = new Scene(borderPane, 1200, 600); // vztvoreni nove sceny a vloyeni tlacitka (pane) do sceny , sirka vyska
         

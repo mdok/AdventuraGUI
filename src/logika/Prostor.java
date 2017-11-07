@@ -27,6 +27,9 @@ public class Prostor {
     private Map<String,Vec> veciVProstoru; // seznam veci v prostoru
     private Set<Postava> postavyVProstoru; // seznam postav v prostoru
     private boolean zamcen; // promena pro zamikani prostoru 
+    
+    private double posX; // pridani 
+    private double posY;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -37,14 +40,24 @@ public class Prostor {
      * @param popis Popis prostoru.
      *  
      */
-    public Prostor(String nazev, String popis) {
+    public Prostor(String nazev, String popis, double posX, double posY) {
         this.nazev = nazev;
         this.popis = popis;
+        this.posX = posX;
+        this.posY = posY;
         vychody = new HashSet<>();
         
        
         veciVProstoru = new HashMap<>();
         postavyVProstoru = new HashSet<>();
+    }
+
+    public double getPosX() {
+        return posX;
+    }
+
+    public double getPosY() {
+        return posY;
     }
 
     /**

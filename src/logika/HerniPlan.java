@@ -1,5 +1,10 @@
 package logika;
 
+import java.util.ArrayList;
+import java.util.List;
+import utils.Observer;
+import utils.Subject;
+
 
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
@@ -12,13 +17,15 @@ package logika;
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Monika Dokoupilová
  *@version    1.0.0
  */
-public class HerniPlan {
+public class HerniPlan implements Subject{
     
     private Prostor aktualniProstor;
     private Prostor viteznyProstor;
     private Prostor zamceny; // ve hre se bude vyskytovat pouze 1 zamceny prostor .. lze jej definovat rovnou
     private Batoh batoh = new Batoh(); // vytvoreni herniho batohu ktery budou ostatni tridy nacitat pres get
     private boolean vyhra;
+    
+    private List<Observer> listObserveru = new ArrayList<Observer>();
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -37,16 +44,16 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor domecek = new Prostor("domeček","domeček, ve kterém bydlí Quido." + "\n" + "Je to sice skromný příbytek, ale útulný");
-        Prostor rybiTrh = new Prostor("rybí_trh", "Rybí trh vedle Quidova domečku.. Tady jsou ty nejlepší ryby! Ňam!"  + "\n" + "Čerstvá a voňavá rybiška na každičkém rohu!");
-        Prostor ustredna = new Prostor("ústředna","Ústředna. Je tu switch kam jsou připojeni všichni mistní zákazníci."  + "\n" + "Vše tu vypadá v pořádku.. všechny porty svítí.. žádný uvolněný kabel..");
-        Prostor sidloISP = new Prostor("sídlo_ISP","Sídlo ISP. Tady sídlí místní poskytovatel telekomunikačních služeb."  + "\n" + "Jediný kdo tu je je mladý technik v monterkách...");
-        Prostor hlubokyLes = new Prostor("hluboký_les","Hluboký les... Sakryš tolika stromů na jednom místě sem jakživ neviděl!...");
-        Prostor parkoviste = new Prostor ("parkoviště","Parkoviště. Nachází se hned vedle datacentra. Je tu vrátný v letech. Má slušivou čapku");
-        Prostor datacentrum = new Prostor ("datacentrum","Datacentrum. Zde se nachází všechny routery okolních ISP.");
-        Prostor sidloKocicaka = new Prostor ("sídlo_Kočičáka","Sídlo velkého Kočičáka  největšího dodavatele modulů SFP+ široko daleko."  + "\n" + "Je tu Kočičák sám. Vypadá jako pravý gantleman");
-        Prostor park = new Prostor ("park","Park. Sem chodí kočičí rodinky se svými koťátky, aby se provětrala. Teď je u ale prázdno");
-        Prostor utulek = new Prostor ("útulek","Útulek pro ztracená koťátka. Posílají sem všechna ztracená koťátka."  + "\n" + "Na nástěnce je pár otisků tlapek nových nalezenců a jejich jména");
+        Prostor domecek = new Prostor("domeček","domeček, ve kterém bydlí Quido." + "\n" + "Je to sice skromný příbytek, ale útulný", 110,40);
+        Prostor rybiTrh = new Prostor("rybí_trh", "Rybí trh vedle Quidova domečku.. Tady jsou ty nejlepší ryby! Ňam!"  + "\n" + "Čerstvá a voňavá rybiška na každičkém rohu!", 50,60);
+        Prostor ustredna = new Prostor("ústředna","Ústředna. Je tu switch kam jsou připojeni všichni mistní zákazníci."  + "\n" + "Vše tu vypadá v pořádku.. všechny porty svítí.. žádný uvolněný kabel..",70,80);
+        Prostor sidloISP = new Prostor("sídlo_ISP","Sídlo ISP. Tady sídlí místní poskytovatel telekomunikačních služeb."  + "\n" + "Jediný kdo tu je je mladý technik v monterkách...",90,50);
+        Prostor hlubokyLes = new Prostor("hluboký_les","Hluboký les... Sakryš tolika stromů na jednom místě sem jakživ neviděl!...",35,65);
+        Prostor parkoviste = new Prostor ("parkoviště","Parkoviště. Nachází se hned vedle datacentra. Je tu vrátný v letech. Má slušivou čapku",10,40);
+        Prostor datacentrum = new Prostor ("datacentrum","Datacentrum. Zde se nachází všechny routery okolních ISP.",70,65);
+        Prostor sidloKocicaka = new Prostor ("sídlo_Kočičáka","Sídlo velkého Kočičáka  největšího dodavatele modulů SFP+ široko daleko."  + "\n" + "Je tu Kočičák sám. Vypadá jako pravý gantleman",40,60);
+        Prostor park = new Prostor ("park","Park. Sem chodí kočičí rodinky se svými koťátky, aby se provětrala. Teď je u ale prázdno",35,75);
+        Prostor utulek = new Prostor ("útulek","Útulek pro ztracená koťátka. Posílají sem všechna ztracená koťátka."  + "\n" + "Na nástěnce je pár otisků tlapek nových nalezenců a jejich jména",30,20);
                 
         // přiřazují se průchody mezi prostory (sousedící prostory)
         domecek.setVychod(rybiTrh);
@@ -266,6 +273,7 @@ public class HerniPlan {
     public void setAktualniProstor(Prostor prostor) {
        aktualniProstor = prostor;
        jeVyhra();
+       notifyAlllObservers();
     }
     
     
@@ -319,6 +327,24 @@ public class HerniPlan {
      */
     public void setVyhra(boolean vyhra){
        this.vyhra = vyhra;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        listObserveru.add(observer);
+    }
+
+    @Override
+    public void deleteObserver(Observer observer) {
+        listObserveru.remove(observer);
+
+    }
+
+    @Override
+    public void notifyAlllObservers() {
+        for (Observer listObserveruItem : listObserveru) {
+            listObserveruItem.update();
+        }
     }
     
 }
