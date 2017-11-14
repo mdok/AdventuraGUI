@@ -44,9 +44,17 @@ public class Mapa extends AnchorPane implements Observer{
         this.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosX());
     }
     
-  
-        
+   
 
+    @Override
+    public void novaHra(IHra hra) {
+        hra.getHerniPlan().deleteObserver(this); // pred prirazenim nove instance observeru k pozorovani se musi observer z puvodni instance odregistrovat !! *** totez pro ostatni
+        this.hra = hra; // puvodni globalni promenna hra(zelena) teto tridy - jeji obsah se nahradi novou hrou vytvorenou(predanou) zde
+        hra.getHerniPlan().registerObserver(this);
+        update();
+    }
+    
+        
 }
     
     

@@ -39,17 +39,22 @@ public class Main extends Application {
     
     private Mapa mapa;
     private MenuPole menu;
+    private IHra hra;
+    private TextArea centerText; // globalni promenne dostupne v cele tride - v netbeans jsou zelene / plati tedy pro celou main tridu
+    private Stage primaryStage; // globalni promena v ramci tridy main - abychom se na ni mohli dostat pres instance tridy main v jinych tridach jako je menuPole (main.getPrimaryStage())
+
     
     @Override
     public void start(Stage primaryStage) {
         
-      
-        IHra hra= new Hra(); // spusti hru
+        this.primaryStage = primaryStage;
+        hra= new Hra(); // spusti hru
         mapa = new Mapa(hra);
-        menu = new MenuPole();
+        menu = new MenuPole(this);
         
         BorderPane borderPane = new BorderPane();
-        TextArea centerText = new TextArea();
+        
+        centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
         centerText.setEditable(false);
         borderPane.setCenter(centerText);
@@ -118,5 +123,16 @@ public class Main extends Application {
         
         //launch(args); //spusti metodu start
     }
+
+    public void novaHra() {
+        hra = new Hra();
+        centerText.setText(hra.vratUvitani());
+        // to same pro vsechny observery / DU ****
+        mapa.novaHra(hra);
+    }
     
+    
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
 }

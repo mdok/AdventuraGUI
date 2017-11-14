@@ -5,11 +5,15 @@
  */
 package utils;
 
+import logika.IHra;
+
 /**
  *
  * @author dokm01
  */
 public interface Observer {
     void update();
+    
+    void novaHra(IHra hra);
     
 }
