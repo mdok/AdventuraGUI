@@ -33,7 +33,11 @@ public class PrikazBatoh implements IPrikaz
     public String provedPrikaz(String... parametry) {
         Batoh batoh = plan.getBatoh();
         int limit = plan.getBatoh().getLimit();
+<<<<<<< HEAD
         return  batoh.vypisVeci() + "\n" + "Limit: " + limit + " věci";
+=======
+        return  batoh.vypisVeci() + "\n" + "Limit: " + limit + " věci" + "\n";
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
     }
     
     /**

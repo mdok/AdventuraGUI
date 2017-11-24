@@ -8,6 +8,7 @@ package utils;
 import logika.IHra;
 
 /**
+<<<<<<< HEAD
  *  Rozhraní určující metody, které musí obsahovat všechny třídy implementující dané rozhraní.
  *
  *@author Monika Dokoupilová
@@ -22,6 +23,14 @@ public interface Observer {
     /**
      * Metoda regujicí na zavolání nové hry (přeregistrování observerů)
      */
+=======
+ *
+ * @author dokm01
+ */
+public interface Observer {
+    void update();
+    
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
     void novaHra(IHra hra);
     
 }

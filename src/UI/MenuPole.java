@@ -15,6 +15,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+<<<<<<< HEAD
 import main.Main;
 
 /**
@@ -27,19 +28,40 @@ import main.Main;
 public class MenuPole extends MenuBar{
     private Main main;
     
+=======
+import logika.Hra;
+import logika.IHra;
+import main.Main;
+
+/**
+ *
+ * @author dokm01
+ */
+public class MenuPole extends MenuBar{
+    private Main main;
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
     public MenuPole(Main main){
         this.main=main;
         init();
     }
+<<<<<<< HEAD
     /**
      * Metoda inicializující Menu a jeho jednotlivé položky.
      * Obsahuje EventHandlery obstarávající události kliknutí na položku.
      */
+=======
+    
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
     private void init(){
         Menu menuSoubor = new Menu("Adventura");
         
         MenuItem itemNovaHra = new MenuItem("Nova hra");
+<<<<<<< HEAD
         itemNovaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
+=======
+                //MenuItem itemNovaHra = new MenuItem(new Image("Nova hra", new ImageView(Main.class.getResourcesAsStream("/zdroje/obrazek/ikona.png")))); - pro vlozeni obrazku do manu
+        itemNovaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+N")); // klavesova zkratka na novou hru
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
         
         MenuItem itemKonec = new MenuItem("Konec");
         
@@ -59,9 +81,16 @@ public class MenuPole extends MenuBar{
                 alert.setTitle("O Adventure");
                 alert.setHeaderText("Toto je ma adventura");
                 alert.setContentText("Graficka verze adventury");
+<<<<<<< HEAD
                 alert.initOwner(main.getPrimaryStage()); // kdo je vlastnikem popupu - primaryStage
                 
                 alert.showAndWait();
+=======
+                alert.initOwner(main.getPrimaryStage()); // kdo je vlastnikem popupu / primaryStage
+                
+                alert.showAndWait();
+              
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
             }
         });
         
@@ -78,7 +107,13 @@ public class MenuPole extends MenuBar{
                 stage.show();
             }
         });
+<<<<<<< HEAD
  
+=======
+        
+       
+        
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
         itemKonec.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
