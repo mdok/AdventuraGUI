@@ -46,13 +46,15 @@ public class Hra implements IHra {
      */
     public String vratUvitani() {
         return "Vítejte v mé malé adventůře!\n" +
-               "Malý kocourek Quido je studentem pražské VŠE fakulty Informatiky a statistiky.\n" +
-               "Je to pilný a šikovný student a tak odevzdává všechny úkoly včas do odevzdávárny.\n" +
-               "Teď musí včas odevzdat úkol z programování. Jelikož je Quido pilný student, má úkol dávno hotový.\n" +
-               "Chybí jen ho vložit do odevzdávárny.....\n" +
+               "Malý kocourek Quido je studentem pražské VŠE fakulty \n" +
+               "Informatiky a statistiky. Je to pilný a šikovný student,a tak odevzdává všechny \n" +
+               "úkoly včas do odevzdávárny.\n" +
+               "Teď musí včas odevzdat úkol z programování.Jelikož je Quido pilný student,\n" +
+               " má úkol dávno hotový.Chybí jen ho vložit do odevzdávárny.....\n\n" +
                "Ale nééé! Nefunguje mi internet! Jak jen teď úkol odevzdám!\n" +
-               "Musím si ho zprovoznit! U mě doma se zdá být vše v pořádku.. Problém musí být jinde.\n" +
-               "Tuhle záhadu já vyřešit dokážu! Hurá do boje za konektivnější zítřky!\n\n" +
+               "Musím si ho zprovoznit! U mě doma se zdá být vše v pořádku.. \n" +
+               "Problém musí být jinde..\n\n" +
+               "Tuhle záhadu já vyřešit dokážu! Hurá do boje za konektivnější zítřky!\n\n\n" +
                "Napište 'nápověda', pokud si nevíte rady, jak hrát dál.\n" +
                "\n" +
                herniPlan.getAktualniProstor().dlouhyPopis() + "\n";
@@ -105,7 +107,7 @@ public class Hra implements IHra {
         }
         
         if (konecHry == true && herniPlan.getVyhra() == true){ //pokud je hra ukončena a je výhra metoda getVyhra se nachází v herním plánu a je volána v příkazu výměna (setVyhra)
-           textKVypsani= "Uff... Hotovo a odevzdáno! Internet funguje jako na drátkách, ale byla to dřina!" + "\n"+ 
+           textKVypsani= "Uff... Hotovo a odevzdáno! Internet funguje jako na drátkách,\n" +"ale byla to dřina!" + "\n"+ 
                         "Děkuji za pomoc bez tebe by to nešlo!" + "\n"+"Gratulujeme vyhral jsi!"+ "\n";
             
         }

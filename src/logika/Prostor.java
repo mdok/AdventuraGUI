@@ -8,6 +8,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import utils.Observer;
+import utils.Subject;
+
 /**
  * Trida Prostor - popisuje jednotlivé prostory (místnosti) hry
  *
@@ -16,11 +19,15 @@ import java.util.stream.Collectors;
  * "Prostor" reprezentuje jedno místo (místnost, prostor, ..) ve scénáři hry.
  * Prostor může mít sousední prostory připojené přes východy. Pro každý východ
  * si prostor ukládá odkaz na sousedící prostor.
- *
+ *  
+ * Nově třída Prostor implementuje rozhraní Subject a je předmětem pozorování pro observery ListVeciProstor a
+ * ListBatoh. Notifikovat všechny pozorovatele je potřeba v případě sebrání věci z prostoru a při přidání věci
+ * do prostoru (zavolat metodu update() u všech observerů).
+ * 
  * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Monika Dokoupilová
  * @version   1.0.0
  */
-public class Prostor {
+public class Prostor implements Subject {
     private String nazev; // název prostoru
     private String popis; // popis prostoru
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
@@ -30,6 +37,8 @@ public class Prostor {
     
     private double posX; // pridani 
     private double posY;
+    
+    private List<Observer> listObserveru = new ArrayList<Observer>();
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -224,13 +233,14 @@ public class Prostor {
     
     /**
      * Metoda vkládá věco do prostoru. Vstupním parametrem je věc. 
-     * 
+     * Při vložení věci do prostoru se notifikují observeři.
      * @param neco reprezentuje věc vkládanou do prostoru
      * @return vrací výsledek vložení true/false
      */
     
     public boolean vlozVec (Vec neco){
         veciVProstoru.put(neco.getNazev(), neco);
+        notifyAlllObservers(); //nove
         return true;
     }
     
@@ -246,12 +256,17 @@ public class Prostor {
     
     /**
      * Mteoda odebírá věc daného názvu z prostoru.
-     * 
+     * Při odebrání věci z prostoru se notifikují observeři.
      * @param nazev název odebírané věci
      * @return vrací odebíranou věc
      */
     public Vec odeberVec (String nazev){
-        return veciVProstoru.remove(nazev);
+           Vec odebirana = null;
+           odebirana = veciVProstoru.get(nazev);
+           veciVProstoru.remove(nazev);
+           notifyAlllObservers();
+           return odebirana;
+       
     }
     
     /**
@@ -317,5 +332,44 @@ public class Prostor {
      */
     public String gePopisPostav(){
         return this.popisPostav();
+    }
+
+    
+    //*nove
+    
+    public Vec getVec(String nazev){  //vraceni veci  z batohu podle nazvu
+        Vec vec = veciVProstoru.get(nazev);
+        return vec;
+    }
+    
+    public Map<String,Vec> getVeciVProstoru(){ //testovani kapacity batohu
+       return this.veciVProstoru;
+    }
+    
+    /**
+     * Metoda registruje observera k pozorování událostí týkajícíh se věcí v prostoru.
+     * @param observer - parametrem je observer (instance třídy, která pozoruje).
+     */ 
+    @Override
+    public void registerObserver(Observer observer) {
+        listObserveru.add(observer);
+    }
+    /**
+     * Metoda ruší registraci observera k pozorování událostí týkajícíh se věcí v prostoru.
+     * @param observer - parametrem je observer (instance třídy, která pozoruje).
+     */ 
+    @Override
+    public void deleteObserver(Observer observer) {
+        listObserveru.remove(observer);
+    }
+    /**
+     * Metoda notifikuje všechny observery = volá na ně metodu update().
+     */ 
+    @Override
+    public void notifyAlllObservers() {
+        for (Observer listObserveruItem : listObserveru) {
+            listObserveruItem.update();
+        }
+
     }
 }

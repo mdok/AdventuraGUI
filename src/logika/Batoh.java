@@ -1,20 +1,28 @@
 package logika;
 import java.util.*;
+import utils.Observer;
+import utils.Subject;
+
 
 
 /**
  * Třída batoh popisuje herní batoh a jeho metody. Intance této třídy je vytvořena ve třídě herní plán,
  * která také obsahuje metodu getBatoh(), jež slouží pro sdílení jednoho stejného batohu ve všech třídách
  * hry a umožňuje jim tak s batohem manipulovat pomocí metod definovaných v této třídě.
- * 
+ * Nově třída Batoh implementuje rozhraní Subject a je předmětem pozorování pro observery ListVeciProstor a
+ * ListBatoh. Notifikovat všechny pozorovatele je potřeba v případě odebrání věci z batohu a při přidání věci
+ * do batohu (zavolat metodu update() u všech observerů).
  * 
  * @Monika Dokoupilová 
- * @version 1.0.0
+ * @version 2.0.0
  */
-public class Batoh
+public class Batoh implements Subject
 {
      private Set<Vec> veciVBatohu ;
      private int limit = 3; // limit batohu jsou 3 věci
+    
+     private List<Observer> listObserveru = new ArrayList<Observer>();
+
 
     /**
      * Batohu je definován limit věcí, které může obsahovat a je realizován jako HashSet.
@@ -29,15 +37,15 @@ public class Batoh
     /**
      * Metoda vkládá věc do batohu a ověřuje pomocí metody jePlno() zda batoh již není plný.
      * Návratová hodnota je typu boolean. V případě úspěšného vložení vrací true. V opačném případě false.
-     * 
+     * Při vložení věci do batohu se notifikují observeři.
      * @param vec - věc vkládaná do batohu
      * @return vrací výsledek vložení true/false
      */
     public boolean vlozDoBatohu(Vec vec)
     {
-        // zavola se pri prikazu seber na prenositelnou vec prida vec pokud neni plno
-        if(this.jePlno() == false){
+       if(this.jePlno() == false){
         veciVBatohu.add(vec);
+        notifyAlllObservers();
         return true;
        }
        else{
@@ -49,18 +57,25 @@ public class Batoh
      * Metoda odebírá věc daného názvu z batohu. Postupně prochází věci v batohu pomocí cyklu foreach,
      * zjišťuje jejich název a porovnává jej s názvem věci, kterou se hráč snaží odebrat z batohu.
      * V případě shody se věc odebere z batohu a metoda vrátí hodnotu true. V opačném případě vrací false.
-     * 
+     * Při odebrání věci z batohu se notifikují observeři.
      * @param nazev - název odebírané věci
      * @return vrací výsledek odebrání
      */
-    public boolean odeberZBatohu(String nazev){ //* odebrani veci z batohu porovnani nazvu pres equals na shodnost veci
+    public boolean odeberZBatohu(String nazev){ 
       Vec odebirana = null;
+
      for(Vec vec: veciVBatohu){
        if(nazev.equals(vec.getNazev())){
-          odebirana = vec;               
-       }  
+          odebirana = vec;  
+          veciVBatohu.remove(odebirana);
+          notifyAlllObservers(); 
+          return true; 
+       }
      }
-     return veciVBatohu.remove(odebirana);
+    
+     notifyAlllObservers(); 
+     return veciVBatohu.remove(odebirana); 
+      
     }
   
     /**
@@ -70,9 +85,9 @@ public class Batoh
      */
     public String vypisVeci(){
        //vypis veci v batohu
-       String vypis = "Věci v batohu:";
+       String vypis = "Věci v batohu:"+"\n";
         for (Vec vec : veciVBatohu) {
-            vypis += " " + vec.getNazev();
+            vypis += " " + vec.getNazev()+"\n";
         }
         return vypis;
        
@@ -107,13 +122,49 @@ public class Batoh
      * @return vrací instanci třídy Vec, konkrétně hledanou věc
      */ 
     public Vec getVec(String nazev){  //vraceni veci  z batohu podle nazvu
-       Vec hledana = null;
+        Vec hledana = null;
       for(Vec vec: veciVBatohu){
        if(nazev.equals(vec.getNazev())){
           hledana = vec;               
        }  
       }
       return hledana;
+    }
+    
+    
+    /**
+     * Metoda vrací set věcí v batohu.
+     * 
+     * @return vrací set věcí v batohu.
+     */ 
+    public Set<Vec> getVeciVBatohu(){ //testovani kapacity batohu
+       return this.veciVBatohu;
+    }
+    /**
+     * Metoda registruje observera k pozorování událostí týkajícíh se batohu.
+     * @param observer - parametrem je observer (instance třídy, která pozoruje).
+     */ 
+    @Override
+    public void registerObserver(Observer observer) {
+        listObserveru.add(observer);
+    }
+    /**
+     * Metoda ruší registraci observera k pozorování událostí týkajícíh se batohu.
+     * @param observer - parametrem je observer (instance třídy, která pozoruje).
+     */ 
+    @Override
+    public void deleteObserver(Observer observer) {
+        listObserveru.remove(observer);
+
+    }
+    /**
+     * Metoda notifikuje všechny observery = volá na ně metodu update().
+     */ 
+    @Override
+    public void notifyAlllObservers() {
+        for (Observer listObserveruItem : listObserveru) {
+            listObserveruItem.update();
+        }
     }
    
 }
