@@ -3,6 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
             <file>file:/Users/monika/Documents/skola/pro_adventura/AdventuraGUI-master/src/UI/Mapa.java</file>
             <file>file:/Users/monika/Documents/skola/pro_adventura/AdventuraGUI-master/src/main/Main.java</file>
             <file>file:/Users/monika/Documents/skola/pro_adventura/AdventuraGUI-master/src/logika/PrikazOdeber.java</file>
@@ -12,6 +16,19 @@
             <file>file:/Users/monika/Documents/skola/pro_adventura/AdventuraGUI-master/src/UI/MenuPole.java</file>
             <file>file:/Users/monika/Documents/skola/pro_adventura/AdventuraGUI-master/src/UI/ListVychody.java</file>
             <file>file:/Users/monika/Documents/skola/pro_adventura/AdventuraGUI-master/src/UI/ListVeciProstor.java</file>
+<<<<<<< HEAD
+=======
+=======
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/logika/Prostor.java</file>
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/UI/MenuPole.java</file>
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/utils/Observer.java</file>
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/logika/HerniPlan.java</file>
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/main/Start.java</file>
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/UI/Mapa.java</file>
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/main/Main.java</file>
+            <file>file:/H:/prog/NetBeansProjects/Adventura/src/utils/Subject.java</file>
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         </group>
     </open-files>
 </project-private>

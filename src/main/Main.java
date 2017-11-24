@@ -5,11 +5,23 @@
  */
 package main;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
 import UI.ListBatoh;
 import UI.ListVeciProstor;
 import UI.ListVychody;
 import UI.Mapa;
 import UI.MenuPole;
+<<<<<<< HEAD
+=======
+=======
+import UI.Mapa;
+import UI.MenuPole;
+import java.util.HashSet;
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,6 +31,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
@@ -34,6 +50,28 @@ import uiText.TextoveRozhrani;
  * 
  * @Monika Dokoupilová 
  * @version 1.0.0
+<<<<<<< HEAD
+=======
+=======
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import logika.Hra; // import balicku logika.Hra vzhledem k tomu ze ho tu pouzivame
+import logika.IHra;
+import logika.*;
+import uiText.TextoveRozhrani;
+
+/**
+ *
+ * @author dokm01
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
  */
 public class Main extends Application {
     
@@ -42,6 +80,10 @@ public class Main extends Application {
     private IHra hra;
     private TextArea centerText; // globalni promenne dostupne v cele tride - v netbeans jsou zelene / plati tedy pro celou main tridu
     private Stage primaryStage; // globalni promena v ramci tridy main - abychom se na ni mohli dostat pres instance tridy main v jinych tridach jako je menuPole (main.getPrimaryStage())
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     
     private ListVychody listVychody;
     private ListBatoh listBatoh;
@@ -50,6 +92,13 @@ public class Main extends Application {
     /**
      * Metoda vytváří hlavní jeviště hry a vkládá na něj objekty.
      */ 
+<<<<<<< HEAD
+=======
+=======
+
+    
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     @Override
     public void start(Stage primaryStage) {
         
@@ -57,6 +106,10 @@ public class Main extends Application {
         hra= new Hra(); // spusti hru
         mapa = new Mapa(hra);
         menu = new MenuPole(this);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         centerText = new TextArea();
         
         listVychody= new ListVychody(hra,centerText);
@@ -74,6 +127,25 @@ public class Main extends Application {
 
         TextField zadejPrikazTextField = new TextField("Sem zadej příkaz");
         zadejPrikazTextField.setMinWidth(200);
+<<<<<<< HEAD
+=======
+=======
+        
+        BorderPane borderPane = new BorderPane();
+        
+        centerText = new TextArea();
+        centerText.setText(hra.vratUvitani());
+        centerText.setEditable(false);
+        borderPane.setCenter(centerText);
+                
+        Label zadejPrikazLabel = new Label("Zadej prikaz");
+        zadejPrikazLabel.setFont(Font.font("Arial",FontWeight.BOLD, 16));
+        
+        
+        
+        TextField zadejPrikazTextField = new TextField("Sem zadej prikaz");
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         zadejPrikazTextField.setOnAction(new EventHandler<ActionEvent>() { //po entru
 
             @Override
@@ -94,6 +166,10 @@ public class Main extends Application {
             
         });
         
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         Button napoveda = new Button();
         napoveda.setText("Nápověda");
         napoveda.setOnAction(new EventHandler<ActionEvent>() {
@@ -115,10 +191,19 @@ public class Main extends Application {
         flowPaneRight.setMaxWidth(100);
         flowPaneRight.setAlignment(Pos.TOP_CENTER);
    
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         FlowPane dolniPanel = new FlowPane();
         dolniPanel.setAlignment(Pos.CENTER);
         dolniPanel.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextField);
         
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         Label labelBatoh = new Label("Batoh (max. 3 itemy): ");
         Label labelPlanek = new Label("Plánek hry: ");
         Label labelVeciProstor = new Label("Věci v prostoru: ");
@@ -144,10 +229,23 @@ public class Main extends Application {
         borderPane.setLeft(flowPaneLeft);
         borderPane.setRight(flowPaneRight);
         borderPane.setTop(menu); 
+<<<<<<< HEAD
+=======
+=======
+        borderPane.setLeft(mapa);
+        
+        //menu Adventury
+        borderPane.setTop(menu);
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         borderPane.setBottom(dolniPanel);
         Scene scene = new Scene(borderPane, 1200, 600); // vztvoreni nove sceny a vloyeni tlacitka (pane) do sceny , sirka vyska
         
         primaryStage.setTitle("Moje adventura"); // title sceny
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         primaryStage.setScene(scene); // vlozeni sceny na stage 
         primaryStage.show(); // zobrazeni sceny
         
@@ -163,6 +261,23 @@ public class Main extends Application {
     public static void main(String[] args) {
         if(args.length == 0){ //spusti v gui
             launch(args); //launch(args); //zavola metodu start
+<<<<<<< HEAD
+=======
+=======
+        primaryStage.setScene(scene); // vlozeni sceny na stage
+        primaryStage.show(); // zobrazeni sceny
+        
+        zadejPrikazTextField.requestFocus(); // po spusteni adventury lze rovnou psat do pole pro text
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        if(args.length == 0){ //spusti v gui
+            launch(args);
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         }else{
             if(args[0].equals("-text")){ // spusti v textovem rozhrani pri nastaveni parametru -text
                 IHra hra = new Hra();
@@ -174,6 +289,10 @@ public class Main extends Application {
                 System.exit(1);
             }
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
   
     }
     
@@ -197,4 +316,24 @@ public class Main extends Application {
         return primaryStage;
     }
   
+<<<<<<< HEAD
+=======
+=======
+        
+        //launch(args); //spusti metodu start
+    }
+
+    public void novaHra() {
+        hra = new Hra();
+        centerText.setText(hra.vratUvitani());
+        // to same pro vsechny observery / DU ****
+        mapa.novaHra(hra);
+    }
+    
+    
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
 }

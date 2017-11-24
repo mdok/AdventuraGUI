@@ -1,14 +1,27 @@
 package logika;
 import java.util.*;
+<<<<<<< HEAD
 import utils.Observer;
 import utils.Subject;
 
+=======
+<<<<<<< HEAD
+import utils.Observer;
+import utils.Subject;
+
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
 
 
 /**
  * Třída batoh popisuje herní batoh a jeho metody. Intance této třídy je vytvořena ve třídě herní plán,
  * která také obsahuje metodu getBatoh(), jež slouží pro sdílení jednoho stejného batohu ve všech třídách
  * hry a umožňuje jim tak s batohem manipulovat pomocí metod definovaných v této třídě.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
  * Nově třída Batoh implementuje rozhraní Subject a je předmětem pozorování pro observery ListVeciProstor a
  * ListBatoh. Notifikovat všechny pozorovatele je potřeba v případě odebrání věci z batohu a při přidání věci
  * do batohu (zavolat metodu update() u všech observerů).
@@ -23,6 +36,20 @@ public class Batoh implements Subject
     
      private List<Observer> listObserveru = new ArrayList<Observer>();
 
+<<<<<<< HEAD
+=======
+=======
+ * 
+ * 
+ * @Monika Dokoupilová 
+ * @version 1.0.0
+ */
+public class Batoh
+{
+     private Set<Vec> veciVBatohu ;
+     private int limit = 3; // limit batohu jsou 3 věci
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
 
     /**
      * Batohu je definován limit věcí, které může obsahovat a je realizován jako HashSet.
@@ -37,15 +64,35 @@ public class Batoh implements Subject
     /**
      * Metoda vkládá věc do batohu a ověřuje pomocí metody jePlno() zda batoh již není plný.
      * Návratová hodnota je typu boolean. V případě úspěšného vložení vrací true. V opačném případě false.
+<<<<<<< HEAD
      * Při vložení věci do batohu se notifikují observeři.
+=======
+<<<<<<< HEAD
+     * Při vložení věci do batohu se notifikují observeři.
+=======
+     * 
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
      * @param vec - věc vkládaná do batohu
      * @return vrací výsledek vložení true/false
      */
     public boolean vlozDoBatohu(Vec vec)
     {
+<<<<<<< HEAD
        if(this.jePlno() == false){
         veciVBatohu.add(vec);
         notifyAlllObservers();
+=======
+<<<<<<< HEAD
+       if(this.jePlno() == false){
+        veciVBatohu.add(vec);
+        notifyAlllObservers();
+=======
+        // zavola se pri prikazu seber na prenositelnou vec prida vec pokud neni plno
+        if(this.jePlno() == false){
+        veciVBatohu.add(vec);
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         return true;
        }
        else{
@@ -57,6 +104,10 @@ public class Batoh implements Subject
      * Metoda odebírá věc daného názvu z batohu. Postupně prochází věci v batohu pomocí cyklu foreach,
      * zjišťuje jejich název a porovnává jej s názvem věci, kterou se hráč snaží odebrat z batohu.
      * V případě shody se věc odebere z batohu a metoda vrátí hodnotu true. V opačném případě vrací false.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
      * Při odebrání věci z batohu se notifikují observeři.
      * @param nazev - název odebírané věci
      * @return vrací výsledek odebrání
@@ -76,6 +127,23 @@ public class Batoh implements Subject
      notifyAlllObservers(); 
      return veciVBatohu.remove(odebirana); 
       
+<<<<<<< HEAD
+=======
+=======
+     * 
+     * @param nazev - název odebírané věci
+     * @return vrací výsledek odebrání
+     */
+    public boolean odeberZBatohu(String nazev){ //* odebrani veci z batohu porovnani nazvu pres equals na shodnost veci
+      Vec odebirana = null;
+     for(Vec vec: veciVBatohu){
+       if(nazev.equals(vec.getNazev())){
+          odebirana = vec;               
+       }  
+     }
+     return veciVBatohu.remove(odebirana);
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     }
   
     /**
@@ -85,9 +153,21 @@ public class Batoh implements Subject
      */
     public String vypisVeci(){
        //vypis veci v batohu
+<<<<<<< HEAD
        String vypis = "Věci v batohu:"+"\n";
         for (Vec vec : veciVBatohu) {
             vypis += " " + vec.getNazev()+"\n";
+=======
+<<<<<<< HEAD
+       String vypis = "Věci v batohu:"+"\n";
+        for (Vec vec : veciVBatohu) {
+            vypis += " " + vec.getNazev()+"\n";
+=======
+       String vypis = "Věci v batohu:";
+        for (Vec vec : veciVBatohu) {
+            vypis += " " + vec.getNazev();
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         }
         return vypis;
        
@@ -122,7 +202,15 @@ public class Batoh implements Subject
      * @return vrací instanci třídy Vec, konkrétně hledanou věc
      */ 
     public Vec getVec(String nazev){  //vraceni veci  z batohu podle nazvu
+<<<<<<< HEAD
         Vec hledana = null;
+=======
+<<<<<<< HEAD
+        Vec hledana = null;
+=======
+       Vec hledana = null;
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
       for(Vec vec: veciVBatohu){
        if(nazev.equals(vec.getNazev())){
           hledana = vec;               
@@ -130,6 +218,10 @@ public class Batoh implements Subject
       }
       return hledana;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     
     
     /**
@@ -166,5 +258,10 @@ public class Batoh implements Subject
             listObserveruItem.update();
         }
     }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
    
 }

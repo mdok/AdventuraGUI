@@ -13,6 +13,10 @@ import utils.Subject;
  *  vytváří všechny prostory,
  *  propojuje je vzájemně pomocí východů 
  *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
  * 
  *  Nově třída HerniPlan implementuje rozhraní Subject a je předmětem pozorování pro observery ListVeciProstor,
  *  ListBatoh, ListVychody a Mapa. Notifikovat všechny pozorovatele je potřeba v případě přechodu
@@ -20,6 +24,14 @@ import utils.Subject;
  *
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Monika Dokoupilová
  *@version    2.0.0
+<<<<<<< HEAD
+=======
+=======
+ *
+ *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Monika Dokoupilová
+ *@version    1.0.0
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
  */
 public class HerniPlan implements Subject{
     
@@ -54,10 +66,24 @@ public class HerniPlan implements Subject{
         Prostor sidloISP = new Prostor("sídlo_ISP","Sídlo ISP. Tady sídlí místní poskytovatel telekomunikačních služeb."  + "\n" + "Jediný kdo tu je je mladý technik v monterkách...",280,150);
         Prostor hlubokyLes = new Prostor("hluboký_les","Hluboký les... Sakryš tolika stromů na jednom místě sem jakživ neviděl!...",150,150);
         Prostor parkoviste = new Prostor ("parkoviště","Parkoviště. Nachází se hned vedle datacentra. Je tu vrátný v letech. Má slušivou čapku",50,150);
+<<<<<<< HEAD
         Prostor datacentrum = new Prostor ("datacentrum","Datacentrum. Zde se nachází všechny routery okolních ISP.",50,250);
         Prostor sidloKocicaka = new Prostor ("sídlo_Kočičáka","Sídlo velkého Kočičáka  největšího dodavatele modulů SFP+ široko daleko."  + "\n" + "Je tu Kočičák sám. Vypadá jako pravý gantleman",260,250);
         Prostor park = new Prostor ("park","Park. Sem chodí kočičí rodinky se svými koťátky, aby se provětrala. Teď je u ale prázdno",440,250);
         Prostor utulek = new Prostor ("útulek","Útulek pro ztracená koťátka. Posílají sem všechna ztracená koťátka."  + "\n" + "Na nástěnce je pár otisků tlapek nových nalezenců a jejich jména",440,100);
+=======
+<<<<<<< HEAD
+        Prostor datacentrum = new Prostor ("datacentrum","Datacentrum. Zde se nachází všechny routery okolních ISP.",50,250);
+        Prostor sidloKocicaka = new Prostor ("sídlo_Kočičáka","Sídlo velkého Kočičáka  největšího dodavatele modulů SFP+ široko daleko."  + "\n" + "Je tu Kočičák sám. Vypadá jako pravý gantleman",230,250);
+        Prostor park = new Prostor ("park","Park. Sem chodí kočičí rodinky se svými koťátky, aby se provětrala. Teď je u ale prázdno",480,250);
+        Prostor utulek = new Prostor ("útulek","Útulek pro ztracená koťátka. Posílají sem všechna ztracená koťátka."  + "\n" + "Na nástěnce je pár otisků tlapek nových nalezenců a jejich jména",480,100);
+=======
+        Prostor datacentrum = new Prostor ("datacentrum","Datacentrum. Zde se nachází všechny routery okolních ISP.",50,210);
+        Prostor sidloKocicaka = new Prostor ("sídlo_Kočičáka","Sídlo velkého Kočičáka  největšího dodavatele modulů SFP+ široko daleko."  + "\n" + "Je tu Kočičák sám. Vypadá jako pravý gantleman",150,210);
+        Prostor park = new Prostor ("park","Park. Sem chodí kočičí rodinky se svými koťátky, aby se provětrala. Teď je u ale prázdno",400,150);
+        Prostor utulek = new Prostor ("útulek","Útulek pro ztracená koťátka. Posílají sem všechna ztracená koťátka."  + "\n" + "Na nástěnce je pár otisků tlapek nových nalezenců a jejich jména",400,100);
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
                 
         // přiřazují se průchody mezi prostory (sousedící prostory)
         domecek.setVychod(rybiTrh);
@@ -170,7 +196,15 @@ public class HerniPlan implements Subject{
         Vec telefon = new Vec ("telefon", true,"Telefon NOKIA stará nerozbitelná kvalita");
         Vec lahev = new Vec ("láhev", true,"prazdná láhev od piva");
         Vec parez = new Vec ("pařez", false,"mohutný pařez");
+<<<<<<< HEAD
         Vec pristupova_karta = new Vec ("přístupová_karta", true,"Díky tomuhle můžu do datacentra k racku ISP");
+=======
+<<<<<<< HEAD
+        Vec pristupova_karta = new Vec ("přístupová_karta", true,"Díky tomuhle můžu do datacentra k racku ISP");
+=======
+        Vec pristupova_karta = new Vec ("přístupová_karta", false,"Díky tomuhle můžu do datacentra k racku ISP");
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
         
         
         //vlozeni veci do hlubokeho lesa
@@ -271,7 +305,15 @@ public class HerniPlan implements Subject{
     
     /**
      * Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
+<<<<<<< HEAD
      * Nově také notifikuje všechny observery kdykoliv dojde ke změně aktuálního prostoru
+=======
+<<<<<<< HEAD
+     * Nově také notifikuje všechny observery kdykoliv dojde ke změně aktuálního prostoru
+=======
+     *
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
      *@param  prostor nový aktuální prostor
      */
     public void setAktualniProstor(Prostor prostor) {
@@ -301,7 +343,14 @@ public class HerniPlan implements Subject{
      */
     public Batoh getBatoh(){
         return this.batoh;
+<<<<<<< HEAD
         
+=======
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     }
 
     /**
@@ -333,26 +382,56 @@ public class HerniPlan implements Subject{
     public void setVyhra(boolean vyhra){
        this.vyhra = vyhra;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     /**
      * Metoda registruje observera k pozorování událostí týkajícíh se herního plánu.
      * @param observer - parametrem je observer (instance třídy, která pozoruje).
      */ 
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     @Override
     public void registerObserver(Observer observer) {
         listObserveru.add(observer);
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     /**
      * Metoda ruší registraci observera k pozorování událostí týkajícíh se herního plánu.
      * @param observer - parametrem je observer (instance třídy, která pozoruje).
      */ 
+<<<<<<< HEAD
+=======
+=======
+
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     @Override
     public void deleteObserver(Observer observer) {
         listObserveru.remove(observer);
 
     }
+<<<<<<< HEAD
     /**
      * Metoda notifikuje všechny observery = volá na ně metodu update().
      */ 
+=======
+<<<<<<< HEAD
+    /**
+     * Metoda notifikuje všechny observery = volá na ně metodu update().
+     */ 
+=======
+
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
     @Override
     public void notifyAlllObservers() {
         for (Observer listObserveruItem : listObserveru) {

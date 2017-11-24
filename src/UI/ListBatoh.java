@@ -16,8 +16,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+<<<<<<< HEAD
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+=======
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
 import logika.IHra;
 import logika.Vec;
 import main.Main;
