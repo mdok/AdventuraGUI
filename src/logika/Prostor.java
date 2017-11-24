@@ -8,9 +8,24 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+<<<<<<< HEAD
 import utils.Observer;
 import utils.Subject;
 
+=======
+<<<<<<< HEAD
+import utils.Observer;
+import utils.Subject;
+
+=======
+<<<<<<< HEAD
+import utils.Observer;
+import utils.Subject;
+
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
 /**
  * Trida Prostor - popisuje jednotlivé prostory (místnosti) hry
  *
@@ -19,6 +34,13 @@ import utils.Subject;
  * "Prostor" reprezentuje jedno místo (místnost, prostor, ..) ve scénáři hry.
  * Prostor může mít sousední prostory připojené přes východy. Pro každý východ
  * si prostor ukládá odkaz na sousedící prostor.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
  *  
  * Nově třída Prostor implementuje rozhraní Subject a je předmětem pozorování pro observery ListVeciProstor a
  * ListBatoh. Notifikovat všechny pozorovatele je potřeba v případě sebrání věci z prostoru a při přidání věci
@@ -28,6 +50,19 @@ import utils.Subject;
  * @version   1.0.0
  */
 public class Prostor implements Subject {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+ *
+ * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Monika Dokoupilová
+ * @version   1.0.0
+ */
+public class Prostor {
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
     private String nazev; // název prostoru
     private String popis; // popis prostoru
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
@@ -37,8 +72,21 @@ public class Prostor implements Subject {
     
     private double posX; // pridani 
     private double posY;
+<<<<<<< HEAD
     
     private List<Observer> listObserveru = new ArrayList<Observer>();
+=======
+<<<<<<< HEAD
+    
+    private List<Observer> listObserveru = new ArrayList<Observer>();
+=======
+<<<<<<< HEAD
+    
+    private List<Observer> listObserveru = new ArrayList<Observer>();
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -233,14 +281,37 @@ public class Prostor implements Subject {
     
     /**
      * Metoda vkládá věco do prostoru. Vstupním parametrem je věc. 
+<<<<<<< HEAD
      * Při vložení věci do prostoru se notifikují observeři.
+=======
+<<<<<<< HEAD
+     * Při vložení věci do prostoru se notifikují observeři.
+=======
+<<<<<<< HEAD
+     * Při vložení věci do prostoru se notifikují observeři.
+=======
+     * 
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
      * @param neco reprezentuje věc vkládanou do prostoru
      * @return vrací výsledek vložení true/false
      */
     
     public boolean vlozVec (Vec neco){
         veciVProstoru.put(neco.getNazev(), neco);
+<<<<<<< HEAD
         notifyAlllObservers(); //nove
+=======
+<<<<<<< HEAD
+        notifyAlllObservers(); //nove
+=======
+<<<<<<< HEAD
+        notifyAlllObservers(); //nove
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
         return true;
     }
     
@@ -256,17 +327,45 @@ public class Prostor implements Subject {
     
     /**
      * Mteoda odebírá věc daného názvu z prostoru.
+<<<<<<< HEAD
      * Při odebrání věci z prostoru se notifikují observeři.
+=======
+<<<<<<< HEAD
+     * Při odebrání věci z prostoru se notifikují observeři.
+=======
+<<<<<<< HEAD
+     * Při odebrání věci z prostoru se notifikují observeři.
+=======
+     * 
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
      * @param nazev název odebírané věci
      * @return vrací odebíranou věc
      */
     public Vec odeberVec (String nazev){
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
            Vec odebirana = null;
            odebirana = veciVProstoru.get(nazev);
            veciVProstoru.remove(nazev);
            notifyAlllObservers();
            return odebirana;
        
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+        return veciVProstoru.remove(nazev);
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
     }
     
     /**
@@ -333,6 +432,13 @@ public class Prostor implements Subject {
     public String gePopisPostav(){
         return this.popisPostav();
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
 
     
     //*nove
@@ -372,4 +478,12 @@ public class Prostor implements Subject {
         }
 
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
 }

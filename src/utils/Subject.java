@@ -6,6 +6,13 @@
 package utils;
 
 /**
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
  *  Rozhraní určující metody, které musí obsahovat všechny třídy implementující dané rozhraní.
  *
  *@author Monika Dokoupilová
@@ -27,5 +34,19 @@ public interface Subject {
     /**
      * Metoda notifikuje všechny observery = volá na ně metodu update().
      */ 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+ *
+ * @author dokm01
+ */
+public interface Subject {
+    void registerObserver(Observer observer); // nemusi pred nimi byt public v interface jsou vsechny metody public
+    void deleteObserver(Observer observer);
+>>>>>>> 84e2cb3ac0da5b770ecfef7482933ca6c094e328
+>>>>>>> b30397b76354f2d5c8ef534e953fbbe54af07007
+>>>>>>> 7e732e0853e371a08a52ba452a3547805184f15c
     void notifyAlllObservers();
 }
